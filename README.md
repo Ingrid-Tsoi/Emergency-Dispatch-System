@@ -26,4 +26,4 @@ Files:
 Used for incident priority management.
 
 ## Author
-Group Project
+Ingrid Tsoi
