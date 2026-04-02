@@ -1,29 +1,93 @@
-# COMP8090-Project: Emergency Dispatch System Project
+# COMP8090 Project – Emergency Dispatch System
 
-COMP2090 / COMP8090 Data Structures Project
+## Overview
 
-## Task 1
-Emergency Dispatch System built using Python OOP.
+This repository contains a course project for COMP8090 Data Structures and Algorithms.
 
-Files:
-- main.py
-- gui.py
-- controller.py
-- models.py
+The project consists of:
 
-Features:
-- Report incidents
-- Dispatch emergency units
-- Resolve incidents
-- GUI interface
+* Task 1: Emergency Dispatch System using Object-Oriented Programming
+* Task 2: Implementation of Heap data structure and Heap Sort algorithm
 
-## Task 2
-Heap data structure and heap sort algorithm implementation.
+---
 
-Files:
-- heap_structure.py
+## Repository Structure
 
-Used for incident priority management.
+```
+COMP8090-Project/
+├── task1/
+│   ├── README.md
+│   ├── controller.py
+│   ├── gui.py
+│   ├── main.py
+│   ├── models.py
+│
+├── task2/
+│   ├── README.md
+│   ├── heap_structure.py
+│
+└── README.md
+```
 
-## Author
-Ingrid Tsoi
+---
+
+## Important Note
+
+The system requires all Python files to be in the same directory when running.
+
+Before execution, move or copy the following file:
+
+* `heap_structure.py` (from task2/)
+  into the task1/ folder.
+
+Final structure for execution:
+
+```
+task1/
+├── main.py
+├── gui.py
+├── controller.py
+├── models.py
+├── heap_structure.py
+```
+
+---
+
+## How to Run
+
+1. Ensure all required files are in the same folder (task1/)
+2. Run:
+
+```
+python main.py
+```
+
+---
+
+## Task Summary
+
+### Task 1
+
+* OOP-based system design
+* GUI using Tkinter
+* Incident management and dispatch logic
+
+### Task 2
+
+* Max Heap data structure
+* Heap Sort algorithm
+* Used for priority handling in Task 1
+
+---
+
+## Requirements
+
+* Python 3.x
+* Tkinter (built-in)
+
+---
+
+## Notes
+
+* Incidents are prioritized by severity and waiting time
+* Heap is used as a priority queue for dispatching
