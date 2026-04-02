@@ -1,72 +1,105 @@
-# heap_structure.py
-
 class MaxHeap:
     def __init__(self):
         self.heap = []
 
-    # Push item into heap
+    # -------------------------
+    # Push
+    # -------------------------
     def push(self, incident):
         self.heap.append(incident)
         self._heapify_up(len(self.heap) - 1)
 
-    # Pop highest priority incident
+    # -------------------------
+    # Pop (max priority)
+    # -------------------------
     def pop(self):
-        if not self.heap:
+        if len(self.heap) == 0:
             return None
+
+        # swap root with last
         self._swap(0, len(self.heap) - 1)
         max_item = self.heap.pop()
+
+        # restore heap
         self._heapify_down(0)
+
         return max_item
 
-    # -----------------------------------
-    # Helpers
-    # -----------------------------------
-    def _parent(self, i): return (i - 1) // 2
-    def _left(self, i): return 2 * i + 1
-    def _right(self, i): return 2 * i + 2
+    # -------------------------
+    # Heapify Up
+    # -------------------------
+    def _heapify_up(self, index):
+        while index > 0:
+            parent = (index - 1) // 2
 
-    def _swap(self, a, b):
-        self.heap[a], self.heap[b] = self.heap[b], self.heap[a]
-
-    def _heapify_up(self, i):
-        while i > 0:
-            p = self._parent(i)
-            if self.heap[i].priority > self.heap[p].priority:
-                self._swap(i, p)
-                i = p
+            if self.heap[index].priority > self.heap[parent].priority:
+                self._swap(index, parent)
+                index = parent
             else:
                 break
 
-    def _heapify_down(self, i):
+    # -------------------------
+    # Heapify Down
+    # -------------------------
+    def _heapify_down(self, index):
         size = len(self.heap)
-        while True:
-            left = self._left(i)
-            right = self._right(i)
-            largest = i
 
+        while True:
+            left = 2 * index + 1
+            right = 2 * index + 2
+            largest = index
+
+            # compare left
             if left < size and self.heap[left].priority > self.heap[largest].priority:
                 largest = left
+
+            # compare right
             if right < size and self.heap[right].priority > self.heap[largest].priority:
                 largest = right
 
-            if largest == i:
+            # if no change → done
+            if largest == index:
                 break
 
-            self._swap(i, largest)
-            i = largest
+            self._swap(index, largest)
+            index = largest
 
+    # -------------------------
+    # Swap helper
+    # -------------------------
+    def _swap(self, i, j):
+        self.heap[i], self.heap[j] = self.heap[j], self.heap[i]
 
-# Sorting example for Task 2 report
-def heap_sort(incidents):
+    # -------------------------
+    # Build heap (for rebuild)
+    # -------------------------
+    def build(self, items):
+        self.heap = items[:]
+
+        # start from last non-leaf node
+        for i in range(len(self.heap)//2 - 1, -1, -1):
+            self._heapify_down(i)
+
+    # -------------------------
+    # Check empty
+    # -------------------------
+    def is_empty(self):
+        return len(self.heap) == 0
+    
+
+# ------------------------==
+# Heap Sort Algorithm
+# ------------------------==
+def heap_sort(items):
     heap = MaxHeap()
-    for inc in incidents:
-        heap.push(inc)
+    
+    # Build heap
+    heap.build(items.copy())
 
     sorted_list = []
-    while True:
-        item = heap.pop()
-        if item is None:
-            break
-        sorted_list.append(item)
+
+    # Extract max repeatedly
+    while not heap.is_empty():
+        sorted_list.append(heap.pop())
 
     return sorted_list
