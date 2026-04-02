@@ -8,7 +8,7 @@ It simulates how emergency units respond to incidents based on priority.
 ## Important Note
 
 All Python files must be placed in the same folder when running the program.
-Although files are organized into task1 and task2 in the repository, execution requires them together.
+Although files are organized into task 1 and task 2 in the repository, execution requires them together.
 
 ## Features
 
