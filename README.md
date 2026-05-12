@@ -1,4 +1,4 @@
-# COMP8090 Project – Emergency Dispatch System
+# Emergency Dispatch System
 
 ## Overview
 
